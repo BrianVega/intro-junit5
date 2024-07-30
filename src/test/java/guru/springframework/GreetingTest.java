@@ -1,11 +1,15 @@
 package guru.springframework;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class GreetingTest {
 
     private Greeting greeting;
+
+    @BeforeAll
+    public static void beforeClass() {
+        System.out.println("Before Class");
+    }
 
     @BeforeEach
     void setUp() {
@@ -21,5 +25,15 @@ class GreetingTest {
     @Test
     void testHelloWorld() {
         System.out.println(greeting.helloWorld("Brian"));
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println("In After Each...");
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("After All...");
     }
 }
